@@ -77,6 +77,16 @@
                         break;
                 }
             }
+
+            if (enemyMoveToggle)
+            {
+                if (enemyX < playerX) enemyX++;
+                else if (enemyX > playerX) enemyX--;
+
+                if (enemyY < playerY) enemyY++;
+                else if (enemyY > playerY) enemyY--;
+            }
+            enemyMoveToggle = !enemyMoveToggle;
         }
 
         static void Draw()
@@ -85,6 +95,9 @@
 
             Console.SetCursorPosition(playerX, playerY);
             Console.Write("@");
+
+            Console.SetCursorPosition(enemyX, enemyY);
+            Console.Write("X");
 
             Console.SetCursorPosition(0, 21);
             Console.WriteLine($"Time elapsed (ms): {Math.Round(gameTimeElapsed / 1000)}");
